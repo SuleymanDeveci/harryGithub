@@ -14,8 +14,8 @@ public class ThemeSound1 : MonoBehaviour
         soundIsOn = PlayerPrefs.GetInt("SoundIsOn");
         if (soundIsOn == 1)
         {
-            soundOnObj.SetActive(true);
-            soundOffObj.SetActive(false);
+            soundOnObj.SetActive(false);
+            soundOffObj.SetActive(true);
         }
 
     }
