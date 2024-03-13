@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class ObstacleSpawner : MonoBehaviour
@@ -12,12 +13,15 @@ public class ObstacleSpawner : MonoBehaviour
     [SerializeField] private float maxY;
     [SerializeField] private float minY;
     private float randomY;
+    public TextMeshProUGUI startDebug;
 
     void Start()
     {
         if(GameManager.isFirstStart == false)
         {
+
             InstantiateObstacle();
+            startDebug.text = "ObsacleSpawnerStart" + GameManager.isFirstStart;
         }
         
     }

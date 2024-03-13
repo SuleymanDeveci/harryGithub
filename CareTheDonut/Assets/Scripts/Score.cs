@@ -13,6 +13,7 @@ public class Score : MonoBehaviour
     [SerializeField] TextMeshProUGUI panelScore;
     [SerializeField] TextMeshProUGUI panelHighScore;
     [SerializeField] float timer;
+    public GPGSManager gpgsManager;
 
 
     void Start()
@@ -39,6 +40,7 @@ public class Score : MonoBehaviour
         {
             highScore = score;
             PlayerPrefs.SetInt("highScore", highScore);
+            gpgsManager.AddToLeaderboard(score);
         }
         panelHighScore.text = highScore.ToString();
 
