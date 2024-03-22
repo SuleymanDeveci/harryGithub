@@ -10,7 +10,6 @@ using TMPro;
 
 public class GPGSManager : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI debugText;
 
     private void Awake()
     {
@@ -34,12 +33,10 @@ public class GPGSManager : MonoBehaviour
         {
             //Continue with PlayGames Services
 
-            string name = PlayGamesPlatform.Instance.GetUserDisplayName();
-            debugText.text = "Login Successed " + name;
+            //string name = PlayGamesPlatform.Instance.GetUserDisplayName();
         }
         else
         {
-            debugText.text = "Login Not Successed";
             //Disable your integration with Play Games Services or show a login button
             // to ask user to sign-in. clicking it should call
             //PlayGamesPlatform.Instance.ManuallyAuthenticate(ProcessAuthentication).
@@ -48,17 +45,16 @@ public class GPGSManager : MonoBehaviour
 
     public void AddToLeaderboard(int score)
     {
-        debugText.text = "score basariyla eklenmeye calisir";
+
         // post score 12345 to leaderboard ID "Cfji293fjsie_QA")
         Social.ReportScore(score, "CgkI2qaGpcwREAIQAQ", (bool success) => {
             // handle success or failure
             if (success)
             {
-                debugText.text = "score basariyla eklendi";
+
             }
             else
             {
-                debugText.text = "score eklenemedi";
 
             }
 
@@ -67,9 +63,50 @@ public class GPGSManager : MonoBehaviour
 
     public void ShowLeaderBoardBtn()
     {
-        debugText.text = "LEADERBORD1";
         Social.ShowLeaderboardUI();
-        debugText.text = "LEADERBORD2";
     }
+
+    public void ShowAchievementsUI()
+    {
+        Social.ShowAchievementsUI();
+    }
+
+    public void DoGrantAchivement(string _achievement)  // Tek seferde açýlan baþarýmlar için kullanýlýr. gizli baþarým için kullanýlýrsa hem açýða çýkarýr hemde tamamlar
+    {
+        Social.ReportProgress(_achievement, 100.00f, (bool success) =>
+        {
+            if (success)
+            {
+
+            }
+            else
+            {
+
+            }
+        });
+    }
+
+    public void DoIncrementalAchievement(string _achievement)
+    {
+        PlayGamesPlatform platform = (PlayGamesPlatform)Social.Active;
+
+        platform.IncrementAchievement(_achievement, 1, (bool success) =>
+        {
+            if (success)
+            {
+
+            }
+            else
+            {
+
+            }
+
+
+        });
+    }
+
+    
+
+
 
 }

@@ -21,7 +21,7 @@ public class ObstacleSpawner : MonoBehaviour
         {
 
             InstantiateObstacle();
-            startDebug.text = "ObsacleSpawnerStart" + GameManager.isFirstStart;
+            //startDebug.text = "ObsacleSpawnerStart" + GameManager.isFirstStart;   // bu kodu yazýnca android baþlangýcýnda karakter uçmasý düzelmiþti sanki
         }
         
     }

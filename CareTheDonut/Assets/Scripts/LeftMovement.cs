@@ -10,7 +10,7 @@ public class LeftMovement : MonoBehaviour
     void Start()
     {
         box = GetComponent<BoxCollider2D>();
-        groundWith = box.size.x;
+        groundWith = box.size.x * 0.35f;
 
     }
 
@@ -24,7 +24,7 @@ public class LeftMovement : MonoBehaviour
 
         if(transform.position.x <= -groundWith)
         {
-            transform.position = new Vector2(transform.position.x + 2 * groundWith, transform.position.y);
+            transform.position = new Vector2(transform.position.x + 2f * groundWith, transform.position.y);
         }
     }
 }

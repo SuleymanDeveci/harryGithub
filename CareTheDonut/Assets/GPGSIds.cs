@@ -24,7 +24,18 @@
 
 public static class GPGSIds
 {
+        public const string achievement_legend_wizard = "CgkI2qaGpcwREAIQBQ"; // <GPGSID>
         public const string leaderboard_best_score = "CgkI2qaGpcwREAIQAQ"; // <GPGSID>
+        public const string achievement_learner = "CgkI2qaGpcwREAIQBw"; // <GPGSID>
+        public const string achievement_godlike = "CgkI2qaGpcwREAIQDA"; // <GPGSID>
+        public const string achievement_master_wizard = "CgkI2qaGpcwREAIQBA"; // <GPGSID>
+        public const string achievement_experienced = "CgkI2qaGpcwREAIQCQ"; // <GPGSID>
+        public const string achievement_professional = "CgkI2qaGpcwREAIQCw"; // <GPGSID>
+        public const string achievement_skilled = "CgkI2qaGpcwREAIQCg"; // <GPGSID>
+        public const string achievement_expert_wizard = "CgkI2qaGpcwREAIQAw"; // <GPGSID>
+        public const string achievement_beginner_wizard = "CgkI2qaGpcwREAIQAg"; // <GPGSID>
+        public const string achievement_noob = "CgkI2qaGpcwREAIQBg"; // <GPGSID>
+        public const string achievement_untrained = "CgkI2qaGpcwREAIQCA"; // <GPGSID>
 
 }
 

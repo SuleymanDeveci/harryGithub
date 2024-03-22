@@ -8,6 +8,11 @@ TagManager:
   - Obstacle
   - Column
   - Destroyer
+  - SoundButton
+  - SoundSlider
+  - PausePanel
+  - PausePanelGameObject
+  - ThemeMusic
   layers:
   - Default
   - TransparentFX
