@@ -9,5 +9,7 @@
         <repository>Assets/GooglePlayGames/com.google.play.games/Editor/m2repository</repository>
       </repositories>
     </androidPackage>
+	<androidPackage spec="androidx.fragment:fragment:1.3.6">
+	</androidPackage>
   </androidPackages>
 </dependencies>
