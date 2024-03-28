@@ -16,9 +16,9 @@ public class AdManager : MonoBehaviour
     [SerializeField] GameObject rewardButton;
     // These ad units are configured to always serve test ads.
 #if UNITY_ANDROID
-    private string bannerId = "ca-app-pub-2981870356598697/5468358563";  // ca-app-pub-3940256099942544/6300978111  þuan yorum satýrýndakiler çakma reklamlar orjinal deðil
-    private string interId = "ca-app-pub-2981870356598697/3731717010";  //   ca-app-pub-3940256099942544/1033173712
-    private string rewardedId = "ca-app-pub-2981870356598697/4821491309";   //   ca-app-pub-3940256099942544/5224354917
+    private string bannerId = "ca-app-pub-3940256099942544/6300978111";  //  ca-app-pub-2981870356598697/5468358563 þuan yorum satýrýndakiler orjinal reklamlar çakma deðil
+    private string interId = "ca-app-pub-3940256099942544/1033173712";  //    ca-app-pub-2981870356598697/3731717010
+    private string rewardedId = "ca-app-pub-3940256099942544/5224354917";   //    ca-app-pub-2981870356598697/4821491309
 #elif UNITY_IPHONE
     private string bannerId = "ca-app-pub-3940256099942544/2934735716";
     private string interId = "ca-app-pub-3940256099942544/4411468910";
@@ -42,6 +42,7 @@ public class AdManager : MonoBehaviour
             // This callback is called once the MobileAds SDK is initialized.
         });
         LoadInterstitialAd();
+        LoadRewardedAd();
         //LoadBannerAd();
     }
 

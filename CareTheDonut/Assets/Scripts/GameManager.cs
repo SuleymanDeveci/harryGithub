@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        adManager.LoadRewardedAd();
+        //adManager.LoadRewardedAd();   bu kaldýrdým çünkü Ad managerde oyun baþýnda çaðýracaðýz çünkü yandýðý anda reklam izlemek isteyen biri izleyemiyor
         gameOver = true;
         gameOverPanel.SetActive(true);
         gamePlayPanel.SetActive(false);

@@ -10,10 +10,12 @@ public class SoundManager : MonoBehaviour
     public static SoundManager Instance { get; private set; }
 
     [SerializeField] AudioSource _themeMusic;
-    [SerializeField] int _soundIsOn;
+    //public int _soundIsOn;
     [SerializeField] Slider _themeMusicSlider;
+    private bool sliderFirstValueChanged; //_theme music slideri nin On value changde sesi açmasý oyun her baþladýðýnda sesin açýlmasýna neden oluyordu bunu engellemek için ilk value change de sesi açma sadece 
+                                          // ses seviyesini ayarla demek için bu deðiþkeni kullanacaðým
 
-
+    public int _soundIsOn { get; set; }
     private void Awake()
     {
         //SingletonThisGameObject();
@@ -21,6 +23,7 @@ public class SoundManager : MonoBehaviour
     }
     void Start()
     {
+        sliderFirstValueChanged = false;
         _soundIsOn = PlayerPrefs.GetInt("SoundIsOn");
         _themeMusicSlider.value = PlayerPrefs.GetFloat("ThemeMusicValue");
 
@@ -99,7 +102,25 @@ public class SoundManager : MonoBehaviour
         {
             _soundIsOn = 1;
             PlayerPrefs.SetInt("SoundIsOn", 1);
+            if (_themeMusicSlider.value == 0f)
+            {
+                _themeMusicSlider.value = 0.1f;
+                PlayerPrefs.SetFloat("ThemeMusicValue", _themeMusicSlider.value);
+            }
         }
+    }
+
+    public void SoundOnValueChanged()
+    {
+        
+        if (!_themeMusic.isPlaying && sliderFirstValueChanged)
+        {
+            _soundIsOn = 1;
+            PlayerPrefs.SetInt("SoundIsOn", 1);
+            _themeMusic.Play();
+        }
+        sliderFirstValueChanged = true;
+
     }
 
 
