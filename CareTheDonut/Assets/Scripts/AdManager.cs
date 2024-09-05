@@ -16,9 +16,9 @@ public class AdManager : MonoBehaviour
     [SerializeField] GameObject rewardButton;
     // These ad units are configured to always serve test ads.
 #if UNITY_ANDROID
-    private string bannerId = "ca-app-pub-3940256099942544/6300978111";  //  ca-app-pub-2981870356598697/5468358563 þuan yorum satýrýndakiler orjinal reklamlar çakma deðil
-    private string interId = "ca-app-pub-3940256099942544/1033173712";  //    ca-app-pub-2981870356598697/3731717010
-    private string rewardedId = "ca-app-pub-3940256099942544/5224354917";   //    ca-app-pub-2981870356598697/4821491309
+    private string bannerId = "ca-app-pub-2149732207719747/6097649579";  //     ca-app-pub-3940256099942544/6300978111 þuan yorum satýrýndakiler test reklamlarý
+    private string interId = "ca-app-pub-2149732207719747/9681671369";  //       ca-app-pub-3940256099942544/1033173712
+    private string rewardedId = "ca-app-pub-2149732207719747/3105155733";   //       ca-app-pub-3940256099942544/5224354917
 #elif UNITY_IPHONE
     private string bannerId = "ca-app-pub-3940256099942544/2934735716";
     private string interId = "ca-app-pub-3940256099942544/4411468910";
@@ -63,13 +63,13 @@ public class AdManager : MonoBehaviour
         var adRequest = new AdRequest();
 
         // send the request to load the ad.
-        Debug.Log("Loading banner ad.");
+        //Debug.Log("Loading banner ad.");
         _bannerView.LoadAd(adRequest); //Show the banner on screen
     }
 
     public void CreateBannerView()
     {
-        Debug.Log("Creating banner view");
+        //Debug.Log("Creating banner view");
 
         // If we already have a banner, destroy the old one.
         if (_bannerView != null)
@@ -128,7 +128,7 @@ public class AdManager : MonoBehaviour
     {
         if (_bannerView != null)
         {
-            Debug.Log("Destroying banner view.");
+            //Debug.Log("Destroying banner view.");
             _bannerView.Destroy();
             _bannerView = null;
         }
@@ -237,7 +237,7 @@ public class AdManager : MonoBehaviour
             _rewardedAd = null;
         }
 
-        Debug.Log("Loading the rewarded ad.");
+        //Debug.Log("Loading the rewarded ad.");
 
         // create our request used to load the ad.
         var adRequest = new AdRequest();
@@ -249,13 +249,11 @@ public class AdManager : MonoBehaviour
                 // if error is not null, the load request failed.
                 if (error != null || ad == null)
                 {
-                    Debug.LogError("Rewarded ad failed to load an ad " +
-                                   "with error : " + error);
+                    //Debug.LogError("Rewarded ad failed to load an ad " + "with error : " + error);
                     return;
                 }
 
-                Debug.Log("Rewarded ad loaded with response : "
-                          + ad.GetResponseInfo());
+                //Debug.Log("Rewarded ad loaded with response : " + ad.GetResponseInfo());
 
                 _rewardedAd = ad;
                 RewardedAdEvents(_rewardedAd);
@@ -265,7 +263,7 @@ public class AdManager : MonoBehaviour
     public void ShowRewardedAd()
     {
 
-        if (_rewardedAd != null && _rewardedAd.CanShowAd())
+        if (_rewardedAd != null)     //************* if (_rewardedAd != null && _rewardedAd.CanShowAd())   eski hail böyleydi, rewarded reklam her týkladýðýmýzda gösterilmiyor diye böyle yaptým belki bundandýr
         {
             _rewardedAd.Show((Reward reward) =>
             {
@@ -290,34 +288,34 @@ public class AdManager : MonoBehaviour
             Debug.Log(String.Format("Rewarded ad paid {0} {1}.",
                 adValue.Value,
                 adValue.CurrencyCode));
+            LoadRewardedAd();
         };
         // Raised when an impression is recorded for an ad.
         rewardedAd.OnAdImpressionRecorded += () =>
         {
-            Debug.Log("Rewarded ad recorded an impression.");
+            //Debug.Log("Rewarded ad recorded an impression.");
         };
         // Raised when a click is recorded for an ad.
         rewardedAd.OnAdClicked += () =>
         {
-            Debug.Log("Rewarded ad was clicked.");
+            //Debug.Log("Rewarded ad was clicked.");
         };
         // Raised when an ad opened full screen content.
         rewardedAd.OnAdFullScreenContentOpened += () =>
         {
-            Debug.Log("Rewarded ad full screen content opened.");
+            //Debug.Log("Rewarded ad full screen content opened.");
         };
         // Raised when the ad closed full screen content.
         rewardedAd.OnAdFullScreenContentClosed += () =>
         {
-            Debug.Log("Rewarded ad full screen content closed.");
+            //Debug.Log("Rewarded ad full screen content closed.");
             rewardButton.SetActive(false);
             LoadRewardedAd();
         };
         // Raised when the ad failed to open full screen content.
         rewardedAd.OnAdFullScreenContentFailed += (AdError error) =>
         {
-            Debug.LogError("Rewarded ad failed to open full screen content " +
-                           "with error : " + error);
+            //Debug.LogError("Rewarded ad failed to open full screen content " + "with error : " + error);
         };
     }
     

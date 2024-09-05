@@ -16,8 +16,11 @@ public class GameManager : MonoBehaviour
     public Score score;
     public ObstacleSpawner obstacleSpawner;
     public AdManager adManager;
+    [SerializeField] TextMeshProUGUI fpsText;
     //public TextMeshProUGUI gameCounterText;
     //public TextMeshProUGUI gameCounterText2;
+    
+
     public static GameManager Instance { get; private set; }
 
 
@@ -28,8 +31,7 @@ public class GameManager : MonoBehaviour
     public GameObject gameOverPanel;
     public GameObject gamePlayPanel;
     static int gameCount; // Oyun açýldýktan sonra oynanan oyun sayýsý her 5 oyunda bir reklam göstermek için kullanacaðým
-    //public float sayacTime;
-    //public int fps;
+
     private void Awake()
     {
         SingletonThisGameObject();
@@ -37,8 +39,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
 
-        //fps = 0;
-        //sayacTime = 0;
+
         adManager.LoadBannerAd();
         gameCount = 1;
         gameOver = false;
@@ -50,35 +51,23 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        //ShowFps();
+
     }
 
-    /*
-    private void ShowFps()
-    {
-        if (sayacTime >= 1)
-        {
-            Debug.Log(fps);
-            sayacTime = 0;
-            fps = 0;
-        }
-        else
-        {
-            sayacTime += Time.deltaTime;
-            fps++;
-        }
-    }
-    */
+
+    
 
 
 
 
     public void GameOver()
     {
-        //adManager.LoadRewardedAd();   bu kaldýrdým çünkü Ad managerde oyun baþýnda çaðýracaðýz çünkü yandýðý anda reklam izlemek isteyen biri izleyemiyor
+        adManager.LoadRewardedAd();  // (bu kodu kaldýrdým çünkü Ad managerde oyun baþýnda çaðýracaðýz çünkü yandýðý anda reklam izlemek isteyen biri izleyemiyor) yazýp bu kodu yorum satýrýna almýþým ama
+        //bana þimdi mantýksýz geldi ve kodu yorum satýrýndan çýkardým.
         gameOver = true;
         gameOverPanel.SetActive(true);
         gamePlayPanel.SetActive(false);
+       
         
         if(score.score >= 5)
         {
@@ -95,9 +84,11 @@ public class GameManager : MonoBehaviour
             adManager.ShowInterstitialAd();
             gameCount++;
         }
+        
 
     }
 
+    
     public void Rewarded()
     {
         gameOver = false;
@@ -106,6 +97,7 @@ public class GameManager : MonoBehaviour
         isFirstStart = false;
         gameStarted = true;
     }
+    
 
     public void GameHasStarted()
     {

@@ -12,7 +12,7 @@ public class Fish : MonoBehaviour
     [SerializeField] Score scoreObj;
     public GameManager gameManager;
     public ObstacleSpawner obstacleSpawner;
-    [SerializeField] private AudioSource swim, hit1, hit2, point;
+    [SerializeField] private AudioSource swim, hit1, point;
     private bool died;
     int angle;
     int maxAngle = 20;
@@ -51,12 +51,14 @@ public class Fish : MonoBehaviour
     }
 
     public void fishSwim()
-    {         //(Input.GetKeyDown("w")
-        if (Input.touchCount>0 && GameManager.gameOver == false && isPaused == false)
+    {         //    Input.touchCount > 0 
+
+
+        if (Input.GetKeyDown("w") && GameManager.gameOver == false && isPaused == false)
         {
-            Touch touch = Input.GetTouch(0);
-            if(touch.phase == TouchPhase.Began && touch.position.y < 1200)
-            {
+            //Touch touch = Input.GetTouch(0);
+            //if(touch.phase == TouchPhase.Began && touch.position.y < 1200)
+            //{
                 swim.Play();
                 if (GameManager.gameStarted == false)
                 {
@@ -71,7 +73,7 @@ public class Fish : MonoBehaviour
                     _rb.velocity = Vector2.zero;
                     _rb.velocity = new Vector2(_rb.velocity.x, _jumpForce);
                 }
-            }
+            //}
         }
     }
 
@@ -142,7 +144,7 @@ public class Fish : MonoBehaviour
         if(died == false)
         {
             hit1.Play();
-            hit2.Play();
+          //hit2.Play();
             died = true;
         }
     }
